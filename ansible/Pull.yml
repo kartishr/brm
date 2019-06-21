@@ -1,0 +1,11 @@
+- hosts: {{remote}}
+  become: yes
+  tasks: 
+    - maven_artifact:
+        group_id: projectid
+        artifact_id: artifact-name
+        extension: ear
+        repository_url: 'https://ipaddress:8081/nexus/artifact/maven'
+        username: user
+        password: pass
+     dest: /tmp/latestfile.ear

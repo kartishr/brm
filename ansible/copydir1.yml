@@ -1,0 +1,7 @@
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: copy directories
+      copy:
+        src: /home/gayathri/ansible
+        dest: /home/gayathri/pull

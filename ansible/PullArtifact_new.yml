@@ -1,0 +1,13 @@
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: Creates directory
+      file:
+        path: /home/gayathri/temp2/{{ commitid }}
+        state: directory
+    - name: Download from nexus
+       uri:
+         url:  https://repo1-itg.core.hpecorp.net/nexus/content/repositories/HPINT-release1-M2/com/hpe/pace/test/{{ commitid }}/{{ item }}
+         user: Pace_Nexus_user
+         password: joy.cot-16
+         method: GET

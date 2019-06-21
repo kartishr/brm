@@ -1,0 +1,12 @@
+#Pull artifacts from Nexus HPE server
+- hosts: localhost
+  become: yes
+  tasks:
+    - maven_artifact:
+        group_id: com.hpe
+        artifact_id: test1
+        extension: ear
+        repository_url: 'https://repo1-itg.core.hpecorp.net/nexus/content/repositories/HPINT-release1-M2/'
+        username: Pace_Nexus_user
+        password: joy.cot-16
+    dest: /home/gayathri/downloads

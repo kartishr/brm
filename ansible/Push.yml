@@ -1,0 +1,8 @@
+#Push file into nexus
+---
+-  hosts: localhost
+   become: yes
+      tasks:
+         - name: upload war into nexus
+	      shell: curl -v -u admin:admin123 --upload-file foo.ear 'http://my-nexus-server.com:8081/repository/my-raw-repo/' 
+

@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+    - command: curl -v -u admin:admin123 --upload-file {{ item }} http://localhost:8081/nexus/content/repositories/test1/{{ item }}
+    with_items:
+      - project-1.0.ear
+      - project-2.0.ear

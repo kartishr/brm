@@ -1,0 +1,14 @@
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: copy files
+      file:
+        path: /var/lib/jenkins/.aws
+        state: directory
+        mode: 0755
+      register: result
+    - debug: 
+        var: result
+    - name: get file names to copy
+      command: "find conf/. -type f"
+      register: files_to_copy

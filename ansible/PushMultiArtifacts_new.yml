@@ -1,0 +1,20 @@
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: Loading environment variables
+      tags: always
+      set_fact:
+      commitid: '{{ lookup("env", "COMMITVAR") }}'
+    - name: Upload to nexus
+       uri:
+       #url:  http://localhost:8081/nexus/content/repositories/test1/com/hpe/pace/test/{{ commitid }}/{{ item }}
+        url:  https://repo1-itg.core.hpecorp.net/nexus/content/repositories/HPINT-release1-M2/com/hpe/pace/test/{{ commitid }}/{{ item }}
+        user: Pace_Nexus_user
+        password: joy.cot-16
+        method: PUT
+        status_code: 201,200
+        src: /home/gayathri/ansible/{{ item }}
+      with_items:
+        - project-1.0.ear
+        - project-2.0.ear
+        - project-3.0.ear
